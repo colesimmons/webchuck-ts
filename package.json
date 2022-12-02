@@ -2,10 +2,15 @@
   "name": "webchuck",
   "version": "1.0.0",
   "description": "WebChucK is a package for running ChucK code in the browser",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "author": "Cole Simmons",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typedoc": "^0.23.21",
+    "typescript": "^4.9.3"
+  }
 }
