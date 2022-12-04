@@ -78,12 +78,13 @@ enum InMessage {
 }
 
 export default class Chuck extends window.AudioWorkletNode {
-  private deferredPromises: { [key: number]: any };
-  private deferredPromiseCounter: number;
-  private eventCallbacks: { [key: number]: any };
-  private eventCallbackCounter: number;
-  private chuckID: number = 1;
-  private isReady: DeferredPromise;
+  private deferredPromises: { [key: number]: any } = {};
+  private deferredPromiseCounter: number = 0;
+  private eventCallbacks: { [key: number]: any } = {};
+  private eventCallbackCounter: number = 0;
+
+  private chuckID: number;
+  private isReady: DeferredPromise = defer();
 
   constructor(
     preloadedFiles: File[],
@@ -105,26 +106,23 @@ export default class Chuck extends window.AudioWorkletNode {
         wasm,
       },
     });
-    this.deferredPromises = {};
-    this.deferredPromiseCounter = 0;
-    this.eventCallbacks = {};
-    this.eventCallbackCounter = 0;
-    this.onprocessorerror = (e) => console.error(e);
     this.chuckID = chuckID;
-    this.isReady = defer();
-
-    // Handle incoming messages
-    this.port.onmessage = this.receiveMessage;
+    this.onprocessorerror = (e) => console.error(e);
+    this.port.onmessage = this.receiveMessage.bind(this);
   }
 
-  static async init(filenamesToPreload: Filename[]): Promise<Chuck> {
+  static async init(
+    filenamesToPreload: Filename[],
+  ): Promise<Chuck> {
     const audioContext = new AudioContext();
-    await audioContext.audioWorklet.addModule("./webchuck.js"); // TODO
+    await audioContext.audioWorklet.addModule(
+      "https://ccrma.stanford.edu/~cc/220a/webchuck220aFinal/js/webchuck.js"
+    );
     const wasm = await loadWasm();
     const preloadedFiles = await preloadFiles(filenamesToPreload);
     const chuck = new Chuck(preloadedFiles, audioContext, wasm);
     chuck.connect(audioContext.destination);
-    await chuck.isReady;
+    await chuck.isReady.promise;
     return chuck;
   }
 
@@ -481,7 +479,7 @@ export default class Chuck extends window.AudioWorkletNode {
 
     switch (type) {
       case InMessage.INIT_DONE:
-        if (typeof this.isReady !== undefined) {
+        if (this.isReady) {
           this.isReady.resolve?.();
         }
         break;

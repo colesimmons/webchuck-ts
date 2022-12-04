@@ -4,12 +4,16 @@
   "description": "WebChucK is a package for running ChucK code in the browser",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "tsc"
   },
   "author": "Cole Simmons",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^18.11.10",
     "typedoc": "^0.23.21",
     "typescript": "^4.9.3"
   }

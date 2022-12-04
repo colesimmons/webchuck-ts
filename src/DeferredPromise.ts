@@ -12,7 +12,7 @@
  * This allows us to provide a Promise or async/await interface for ChucK operations.
  */
 export default class DeferredPromise {
-  private promise: Promise<any>;
+  public readonly promise: Promise<any>;
   public resolve: undefined | ((value?: any) => void);
   public reject: undefined | (() => void);
 
