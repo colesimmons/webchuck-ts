@@ -1,3 +1,25 @@
+# Usage
+
+```
+import { Chuck } from 'webchuck'
+const chuck = await Chuck.init([]);
+
+chuck.runCode(`
+  SinOsc sin => dac;
+  220 => sin.freq;
+  1::week => now;
+`);
+```
+
+Note that many browsers do not let audio run without a user interaction.
+You can check for a suspended audio context and resume like this:
+
+```
+if (chuck.context.state === "suspended") {
+  chuck.context.resume();
+}
+```
+
 # Class: Chuck
 
 ## Hierarchy
