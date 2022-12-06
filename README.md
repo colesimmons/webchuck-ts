@@ -32,78 +32,78 @@ if (chuck.context.state === "suspended") {
 
 ### Constructors
 
-- [constructor](Chuck.md#constructor)
+- [constructor](#constructor)
 
 ### Properties
 
-- [channelCount](Chuck.md#channelcount)
-- [channelCountMode](Chuck.md#channelcountmode)
-- [channelInterpretation](Chuck.md#channelinterpretation)
-- [chuckID](Chuck.md#chuckid)
-- [context](Chuck.md#context)
-- [deferredPromiseCounter](Chuck.md#deferredpromisecounter)
-- [deferredPromises](Chuck.md#deferredpromises)
-- [eventCallbackCounter](Chuck.md#eventcallbackcounter)
-- [eventCallbacks](Chuck.md#eventcallbacks)
-- [isReady](Chuck.md#isready)
-- [numberOfInputs](Chuck.md#numberofinputs)
-- [numberOfOutputs](Chuck.md#numberofoutputs)
-- [onprocessorerror](Chuck.md#onprocessorerror)
-- [parameters](Chuck.md#parameters)
-- [port](Chuck.md#port)
+- [channelCount](#channelcount)
+- [channelCountMode](#channelcountmode)
+- [channelInterpretation](#channelinterpretation)
+- [chuckID](#chuckid)
+- [context](#context)
+- [deferredPromiseCounter](#deferredpromisecounter)
+- [deferredPromises](#deferredpromises)
+- [eventCallbackCounter](#eventcallbackcounter)
+- [eventCallbacks](#eventcallbacks)
+- [isReady](#isready)
+- [numberOfInputs](#numberofinputs)
+- [numberOfOutputs](#numberofoutputs)
+- [onprocessorerror](#onprocessorerror)
+- [parameters](#parameters)
+- [port](#port)
 
 ### Methods
 
-- [addEventListener](Chuck.md#addeventlistener)
-- [broadcastEvent](Chuck.md#broadcastevent)
-- [clearChuckInstance](Chuck.md#clearchuckinstance)
-- [clearGlobals](Chuck.md#clearglobals)
-- [connect](Chuck.md#connect)
-- [createFile](Chuck.md#createfile)
-- [disconnect](Chuck.md#disconnect)
-- [dispatchEvent](Chuck.md#dispatchevent)
-- [getAssociativeFloatArrayValue](Chuck.md#getassociativefloatarrayvalue)
-- [getAssociativeIntArrayValue](Chuck.md#getassociativeintarrayvalue)
-- [getFloat](Chuck.md#getfloat)
-- [getFloatArray](Chuck.md#getfloatarray)
-- [getFloatArrayValue](Chuck.md#getfloatarrayvalue)
-- [getInt](Chuck.md#getint)
-- [getIntArray](Chuck.md#getintarray)
-- [getIntArrayValue](Chuck.md#getintarrayvalue)
-- [getString](Chuck.md#getstring)
-- [isShredActive](Chuck.md#isshredactive)
-- [listenForEventOnce](Chuck.md#listenforeventonce)
-- [nextDeferID](Chuck.md#nextdeferid)
-- [receiveMessage](Chuck.md#receivemessage)
-- [removeEventListener](Chuck.md#removeeventlistener)
-- [removeLastCode](Chuck.md#removelastcode)
-- [removeShred](Chuck.md#removeshred)
-- [replaceCode](Chuck.md#replacecode)
-- [replaceCodeWithReplacementDac](Chuck.md#replacecodewithreplacementdac)
-- [replaceFile](Chuck.md#replacefile)
-- [replaceFileWithArgs](Chuck.md#replacefilewithargs)
-- [replaceFileWithArgsWithReplacementDac](Chuck.md#replacefilewithargswithreplacementdac)
-- [replaceFileWithReplacementDac](Chuck.md#replacefilewithreplacementdac)
-- [runCode](Chuck.md#runcode)
-- [runCodeWithReplacementDac](Chuck.md#runcodewithreplacementdac)
-- [runFile](Chuck.md#runfile)
-- [runFileWithArgs](Chuck.md#runfilewithargs)
-- [runFileWithArgsWithReplacementDac](Chuck.md#runfilewithargswithreplacementdac)
-- [runFileWithReplacementDac](Chuck.md#runfilewithreplacementdac)
-- [sendMessage](Chuck.md#sendmessage)
-- [setAssociativeFloatArrayValue](Chuck.md#setassociativefloatarrayvalue)
-- [setAssociativeIntArrayValue](Chuck.md#setassociativeintarrayvalue)
-- [setFloat](Chuck.md#setfloat)
-- [setFloatArray](Chuck.md#setfloatarray)
-- [setFloatArrayValue](Chuck.md#setfloatarrayvalue)
-- [setInt](Chuck.md#setint)
-- [setIntArray](Chuck.md#setintarray)
-- [setIntArrayValue](Chuck.md#setintarrayvalue)
-- [setString](Chuck.md#setstring)
-- [signalEvent](Chuck.md#signalevent)
-- [startListeningForEvent](Chuck.md#startlisteningforevent)
-- [stopListeningForEvent](Chuck.md#stoplisteningforevent)
-- [init](Chuck.md#init)
+- [addEventListener](#addeventlistener)
+- [broadcastEvent](#broadcastevent)
+- [clearChuckInstance](#clearchuckinstance)
+- [clearGlobals](#clearglobals)
+- [connect](#connect)
+- [createFile](#createfile)
+- [disconnect](#disconnect)
+- [dispatchEvent](#dispatchevent)
+- [getAssociativeFloatArrayValue](#getassociativefloatarrayvalue)
+- [getAssociativeIntArrayValue](#getassociativeintarrayvalue)
+- [getFloat](#getfloat)
+- [getFloatArray](#getfloatarray)
+- [getFloatArrayValue](#getfloatarrayvalue)
+- [getInt](#getint)
+- [getIntArray](#getintarray)
+- [getIntArrayValue](#getintarrayvalue)
+- [getString](#getstring)
+- [isShredActive](#isshredactive)
+- [listenForEventOnce](#listenforeventonce)
+- [nextDeferID](#nextdeferid)
+- [receiveMessage](#receivemessage)
+- [removeEventListener](#removeeventlistener)
+- [removeLastCode](#removelastcode)
+- [removeShred](#removeshred)
+- [replaceCode](#replacecode)
+- [replaceCodeWithReplacementDac](#replacecodewithreplacementdac)
+- [replaceFile](#replacefile)
+- [replaceFileWithArgs](#replacefilewithargs)
+- [replaceFileWithArgsWithReplacementDac](#replacefilewithargswithreplacementdac)
+- [replaceFileWithReplacementDac](#replacefilewithreplacementdac)
+- [runCode](#runcode)
+- [runCodeWithReplacementDac](#runcodewithreplacementdac)
+- [runFile](#runfile)
+- [runFileWithArgs](#runfilewithargs)
+- [runFileWithArgsWithReplacementDac](#runfilewithargswithreplacementdac)
+- [runFileWithReplacementDac](#runfilewithreplacementdac)
+- [sendMessage](#sendmessage)
+- [setAssociativeFloatArrayValue](#setassociativefloatarrayvalue)
+- [setAssociativeIntArrayValue](#setassociativeintarrayvalue)
+- [setFloat](#setfloat)
+- [setFloatArray](#setfloatarray)
+- [setFloatArrayValue](#setfloatarrayvalue)
+- [setInt](#setint)
+- [setIntArray](#setintarray)
+- [setIntArrayValue](#setintarrayvalue)
+- [setString](#setstring)
+- [signalEvent](#signalevent)
+- [startListeningForEvent](#startlisteningforevent)
+- [stopListeningForEvent](#stoplisteningforevent)
+- [init](#init)
 
 ## Constructors
 
@@ -205,7 +205,7 @@ ___
 
 ### isReady
 
-• `Private` **isReady**: [`DeferredPromise`](DeferredPromise.md)
+• `Private` **isReady**: [`DeferredPromise`]()
 
 ___
 
@@ -1241,7 +1241,7 @@ ___
 
 ### init
 
-▸ `Static` **init**(`filenamesToPreload`): `Promise`<[`Chuck`](Chuck.md)\>
+▸ `Static` **init**(`filenamesToPreload`): `Promise`<[`Chuck`]()\>
 
 #### Parameters
 
@@ -1251,7 +1251,7 @@ ___
 
 #### Returns
 
-`Promise`<[`Chuck`](Chuck.md)\>
+`Promise`<[`Chuck`]()\>
 
 ---
 
@@ -1261,13 +1261,13 @@ ___
 
 ### Constructors
 
-- [constructor](DeferredPromise.md#constructor)
+- [constructor](#constructor)
 
 ### Properties
 
-- [promise](DeferredPromise.md#promise)
-- [reject](DeferredPromise.md#reject)
-- [resolve](DeferredPromise.md#resolve)
+- [promise](#promise)
+- [reject](#reject)
+- [resolve](#resolve)
 
 ## Constructors
 
