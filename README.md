@@ -101,10 +101,6 @@
 
 window.AudioWorkletNode.constructor
 
-#### Defined in
-
-[src/Chuck.ts:89](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L89)
-
 ## Properties
 
 ### channelCount
@@ -114,10 +110,6 @@ window.AudioWorkletNode.constructor
 #### Inherited from
 
 window.AudioWorkletNode.channelCount
-
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2328
 
 ___
 
@@ -129,10 +121,6 @@ ___
 
 window.AudioWorkletNode.channelCountMode
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2329
-
 ___
 
 ### channelInterpretation
@@ -143,19 +131,11 @@ ___
 
 window.AudioWorkletNode.channelInterpretation
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2330
-
 ___
 
 ### chuckID
 
 • `Private` **chuckID**: `number`
-
-#### Defined in
-
-[src/Chuck.ts:86](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L86)
 
 ___
 
@@ -167,19 +147,11 @@ ___
 
 window.AudioWorkletNode.context
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2331
-
 ___
 
 ### deferredPromiseCounter
 
 • `Private` **deferredPromiseCounter**: `number` = `0`
-
-#### Defined in
-
-[src/Chuck.ts:82](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L82)
 
 ___
 
@@ -191,19 +163,11 @@ ___
 
 ▪ [key: `number`]: `any`
 
-#### Defined in
-
-[src/Chuck.ts:81](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L81)
-
 ___
 
 ### eventCallbackCounter
 
 • `Private` **eventCallbackCounter**: `number` = `0`
-
-#### Defined in
-
-[src/Chuck.ts:84](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L84)
 
 ___
 
@@ -215,19 +179,11 @@ ___
 
 ▪ [key: `number`]: `any`
 
-#### Defined in
-
-[src/Chuck.ts:83](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L83)
-
 ___
 
 ### isReady
 
 • `Private` **isReady**: [`DeferredPromise`](DeferredPromise.md)
-
-#### Defined in
-
-[src/Chuck.ts:87](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L87)
 
 ___
 
@@ -239,10 +195,6 @@ ___
 
 window.AudioWorkletNode.numberOfInputs
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2332
-
 ___
 
 ### numberOfOutputs
@@ -252,10 +204,6 @@ ___
 #### Inherited from
 
 window.AudioWorkletNode.numberOfOutputs
-
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2333
 
 ___
 
@@ -267,10 +215,6 @@ ___
 
 window.AudioWorkletNode.onprocessorerror
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2433
-
 ___
 
 ### parameters
@@ -281,10 +225,6 @@ ___
 
 window.AudioWorkletNode.parameters
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2434
-
 ___
 
 ### port
@@ -294,10 +234,6 @@ ___
 #### Inherited from
 
 window.AudioWorkletNode.port
-
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2435
 
 ## Methods
 
@@ -327,10 +263,6 @@ node_modules/typescript/lib/lib.dom.d.ts:2435
 
 window.AudioWorkletNode.addEventListener
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2436
-
 ▸ **addEventListener**(`type`, `listener`, `options?`): `void`
 
 #### Parameters
@@ -349,10 +281,6 @@ node_modules/typescript/lib/lib.dom.d.ts:2436
 
 window.AudioWorkletNode.addEventListener
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2437
-
 ___
 
 ### broadcastEvent
@@ -369,10 +297,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:293](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L293)
-
 ___
 
 ### clearChuckInstance
@@ -383,10 +307,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:463](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L463)
-
 ___
 
 ### clearGlobals
@@ -396,10 +316,6 @@ ___
 #### Returns
 
 `void`
-
-#### Defined in
-
-[src/Chuck.ts:467](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L467)
 
 ___
 
@@ -423,10 +339,6 @@ ___
 
 window.AudioWorkletNode.connect
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2334
-
 ▸ **connect**(`destinationParam`, `output?`): `void`
 
 #### Parameters
@@ -443,10 +355,6 @@ node_modules/typescript/lib/lib.dom.d.ts:2334
 #### Inherited from
 
 window.AudioWorkletNode.connect
-
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2335
 
 ___
 
@@ -466,10 +374,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:136](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L136)
-
 ___
 
 ### disconnect
@@ -483,10 +387,6 @@ ___
 #### Inherited from
 
 window.AudioWorkletNode.disconnect
-
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2336
 
 ▸ **disconnect**(`output`): `void`
 
@@ -504,10 +404,6 @@ node_modules/typescript/lib/lib.dom.d.ts:2336
 
 window.AudioWorkletNode.disconnect
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2337
-
 ▸ **disconnect**(`destinationNode`): `void`
 
 #### Parameters
@@ -523,10 +419,6 @@ node_modules/typescript/lib/lib.dom.d.ts:2337
 #### Inherited from
 
 window.AudioWorkletNode.disconnect
-
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2338
 
 ▸ **disconnect**(`destinationNode`, `output`): `void`
 
@@ -544,10 +436,6 @@ node_modules/typescript/lib/lib.dom.d.ts:2338
 #### Inherited from
 
 window.AudioWorkletNode.disconnect
-
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2339
 
 ▸ **disconnect**(`destinationNode`, `output`, `input`): `void`
 
@@ -567,10 +455,6 @@ node_modules/typescript/lib/lib.dom.d.ts:2339
 
 window.AudioWorkletNode.disconnect
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2340
-
 ▸ **disconnect**(`destinationParam`): `void`
 
 #### Parameters
@@ -586,10 +470,6 @@ node_modules/typescript/lib/lib.dom.d.ts:2340
 #### Inherited from
 
 window.AudioWorkletNode.disconnect
-
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2341
 
 ▸ **disconnect**(`destinationParam`, `output`): `void`
 
@@ -607,10 +487,6 @@ node_modules/typescript/lib/lib.dom.d.ts:2341
 #### Inherited from
 
 window.AudioWorkletNode.disconnect
-
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2342
 
 ___
 
@@ -634,10 +510,6 @@ Dispatches a synthetic event event to target and returns true if either event's 
 
 window.AudioWorkletNode.dispatchEvent
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:5309
-
 ___
 
 ### getAssociativeFloatArrayValue
@@ -654,10 +526,6 @@ ___
 #### Returns
 
 `any`
-
-#### Defined in
-
-[src/Chuck.ts:452](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L452)
 
 ___
 
@@ -676,10 +544,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:398](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L398)
-
 ___
 
 ### getFloat
@@ -696,10 +560,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:338](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L338)
-
 ___
 
 ### getFloatArray
@@ -715,10 +575,6 @@ ___
 #### Returns
 
 `any`
-
-#### Defined in
-
-[src/Chuck.ts:413](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L413)
 
 ___
 
@@ -737,10 +593,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:430](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L430)
-
 ___
 
 ### getInt
@@ -757,10 +609,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:328](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L328)
-
 ___
 
 ### getIntArray
@@ -776,10 +624,6 @@ ___
 #### Returns
 
 `any`
-
-#### Defined in
-
-[src/Chuck.ts:359](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L359)
 
 ___
 
@@ -798,10 +642,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:376](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L376)
-
 ___
 
 ### getString
@@ -818,10 +658,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:348](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L348)
-
 ___
 
 ### isShredActive
@@ -837,10 +673,6 @@ ___
 #### Returns
 
 `any`
-
-#### Defined in
-
-[src/Chuck.ts:279](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L279)
 
 ___
 
@@ -859,10 +691,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:297](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L297)
-
 ___
 
 ### nextDeferID
@@ -872,10 +700,6 @@ ___
 #### Returns
 
 `number`
-
-#### Defined in
-
-[src/Chuck.ts:129](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L129)
 
 ___
 
@@ -892,10 +716,6 @@ ___
 #### Returns
 
 `void`
-
-#### Defined in
-
-[src/Chuck.ts:477](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L477)
 
 ___
 
@@ -925,10 +745,6 @@ ___
 
 window.AudioWorkletNode.removeEventListener
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2438
-
 ▸ **removeEventListener**(`type`, `listener`, `options?`): `void`
 
 #### Parameters
@@ -947,10 +763,6 @@ node_modules/typescript/lib/lib.dom.d.ts:2438
 
 window.AudioWorkletNode.removeEventListener
 
-#### Defined in
-
-node_modules/typescript/lib/lib.dom.d.ts:2439
-
 ___
 
 ### removeLastCode
@@ -960,10 +772,6 @@ ___
 #### Returns
 
 `any`
-
-#### Defined in
-
-[src/Chuck.ts:177](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L177)
 
 ___
 
@@ -981,10 +789,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:273](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L273)
-
 ___
 
 ### replaceCode
@@ -1000,10 +804,6 @@ ___
 #### Returns
 
 `any`
-
-#### Defined in
-
-[src/Chuck.ts:161](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L161)
 
 ___
 
@@ -1022,10 +822,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:167](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L167)
-
 ___
 
 ### replaceFile
@@ -1041,10 +837,6 @@ ___
 #### Returns
 
 `any`
-
-#### Defined in
-
-[src/Chuck.ts:228](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L228)
 
 ___
 
@@ -1062,10 +854,6 @@ ___
 #### Returns
 
 `any`
-
-#### Defined in
-
-[src/Chuck.ts:247](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L247)
 
 ___
 
@@ -1085,10 +873,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:257](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L257)
-
 ___
 
 ### replaceFileWithReplacementDac
@@ -1106,10 +890,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:237](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L237)
-
 ___
 
 ### runCode
@@ -1125,10 +905,6 @@ ___
 #### Returns
 
 `any`
-
-#### Defined in
-
-[src/Chuck.ts:145](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L145)
 
 ___
 
@@ -1147,10 +923,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:151](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L151)
-
 ___
 
 ### runFile
@@ -1166,10 +938,6 @@ ___
 #### Returns
 
 `any`
-
-#### Defined in
-
-[src/Chuck.ts:184](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L184)
 
 ___
 
@@ -1187,10 +955,6 @@ ___
 #### Returns
 
 `any`
-
-#### Defined in
-
-[src/Chuck.ts:203](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L203)
 
 ___
 
@@ -1210,10 +974,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:213](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L213)
-
 ___
 
 ### runFileWithReplacementDac
@@ -1231,10 +991,6 @@ ___
 
 `any`
 
-#### Defined in
-
-[src/Chuck.ts:193](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L193)
-
 ___
 
 ### sendMessage
@@ -1251,10 +1007,6 @@ ___
 #### Returns
 
 `void`
-
-#### Defined in
-
-[src/Chuck.ts:472](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L472)
 
 ___
 
@@ -1274,10 +1026,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:440](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L440)
-
 ___
 
 ### setAssociativeIntArrayValue
@@ -1296,10 +1044,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:386](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L386)
-
 ___
 
 ### setFloat
@@ -1317,10 +1061,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:334](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L334)
-
 ___
 
 ### setFloatArray
@@ -1337,10 +1077,6 @@ ___
 #### Returns
 
 `void`
-
-#### Defined in
-
-[src/Chuck.ts:409](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L409)
 
 ___
 
@@ -1360,10 +1096,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:422](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L422)
-
 ___
 
 ### setInt
@@ -1381,10 +1113,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:324](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L324)
-
 ___
 
 ### setIntArray
@@ -1401,10 +1129,6 @@ ___
 #### Returns
 
 `void`
-
-#### Defined in
-
-[src/Chuck.ts:355](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L355)
 
 ___
 
@@ -1424,10 +1148,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:368](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L368)
-
 ___
 
 ### setString
@@ -1445,10 +1165,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:344](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L344)
-
 ___
 
 ### signalEvent
@@ -1464,10 +1180,6 @@ ___
 #### Returns
 
 `void`
-
-#### Defined in
-
-[src/Chuck.ts:289](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L289)
 
 ___
 
@@ -1486,10 +1198,6 @@ ___
 
 `number`
 
-#### Defined in
-
-[src/Chuck.ts:306](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L306)
-
 ___
 
 ### stopListeningForEvent
@@ -1507,10 +1215,6 @@ ___
 
 `void`
 
-#### Defined in
-
-[src/Chuck.ts:316](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L316)
-
 ___
 
 ### init
@@ -1526,10 +1230,6 @@ ___
 #### Returns
 
 `Promise`<[`Chuck`](Chuck.md)\>
-
-#### Defined in
-
-[src/Chuck.ts:114](https://github.com/colesimmons/webchuck/blob/3e9361e/src/Chuck.ts#L114)
 
 ---
 
@@ -1553,19 +1253,11 @@ ___
 
 • **new DeferredPromise**()
 
-#### Defined in
-
-[src/DeferredPromise.ts:19](https://github.com/colesimmons/webchuck/blob/3e9361e/src/DeferredPromise.ts#L19)
-
 ## Properties
 
 ### promise
 
 • `Readonly` **promise**: `Promise`<`any`\>
-
-#### Defined in
-
-[src/DeferredPromise.ts:15](https://github.com/colesimmons/webchuck/blob/3e9361e/src/DeferredPromise.ts#L15)
 
 ___
 
@@ -1573,16 +1265,8 @@ ___
 
 • **reject**: `undefined` \| () => `void`
 
-#### Defined in
-
-[src/DeferredPromise.ts:17](https://github.com/colesimmons/webchuck/blob/3e9361e/src/DeferredPromise.ts#L17)
-
 ___
 
 ### resolve
 
 • **resolve**: `undefined` \| (`value?`: `any`) => `void`
-
-#### Defined in
-
-[src/DeferredPromise.ts:16](https://github.com/colesimmons/webchuck/blob/3e9361e/src/DeferredPromise.ts#L16)
