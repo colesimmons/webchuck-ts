@@ -114,11 +114,11 @@ export default class Chuck extends window.AudioWorkletNode {
   static async init(
     filenamesToPreload: Filename[],
   ): Promise<Chuck> {
+    const wasm = await loadWasm();
     const audioContext = new AudioContext();
     await audioContext.audioWorklet.addModule(
       "https://ccrma.stanford.edu/~cc/220a/webchuck220aFinal/js/webchuck.js"
     );
-    const wasm = await loadWasm();
     const preloadedFiles = await preloadFiles(filenamesToPreload);
     const chuck = new Chuck(preloadedFiles, audioContext, wasm);
     chuck.connect(audioContext.destination);
