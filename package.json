@@ -8,7 +8,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
     "doc": "typedoc --plugin typedoc-plugin-markdown --out docs src/index.ts --hideBreadcrumbs --disableSources"
   },
   "author": "Cole Simmons",
