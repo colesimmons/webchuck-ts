@@ -117,7 +117,7 @@ export default class Chuck extends window.AudioWorkletNode {
     const wasm = await loadWasm();
     const audioContext = new AudioContext();
     await audioContext.audioWorklet.addModule(
-      "https://ccrma.stanford.edu/~cc/220a/webchuck220aFinal/js/webchuck.js"
+      "https://chuck.stanford.edu/webchuck/src/webchuck.js"
     );
     const preloadedFiles = await preloadFiles(filenamesToPreload);
     const chuck = new Chuck(preloadedFiles, audioContext, wasm);

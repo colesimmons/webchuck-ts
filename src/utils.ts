@@ -88,7 +88,7 @@ export async function preloadFiles(
 export async function loadWasm(): Promise<ArrayBuffer> {
   return await new Promise((resolve, reject) => {
     asyncLoadFile(
-      "https://ccrma.stanford.edu/~cc/220a/webchuck220aFinal/js/webchuck.wasm",
+      "https://chuck.stanford.edu/webchuck/src/webchuck.wasm",
       resolve,
       reject
     );
