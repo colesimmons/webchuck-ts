@@ -1,114 +1,63 @@
+/*
+* Here's a brief overview of the main components of the Chuck class:
+*  - Constructor: The constructor takes preloaded files, an AudioContext, and a WebAssembly (Wasm) binary as input. It initializes the AudioWorkletNode and sets up the necessary event listeners and error handlers.
+*  - init: A static method that initializes a new instance of the Chuck class. It loads the Wasm binary, creates an AudioContext, adds the AudioWorklet module, preloads files, and connects the instance to the audio context's destination.
+*  - AudioWorkletNode: Methods that expose the AudioWorkletNode, or properties of it.
+*  - Filesystem: Methods like createFile and preloadFiles help manage files within the ChucK environment.
+*  - Run/Replace Code: Methods like runCode, runCodeWithReplacementDac, replaceCode, and replaceCodeWithReplacementDac allow running and replacing ChucK code with or without a specified DAC (Digital-to-Analog Converter).
+*  - Run/Replace File: Methods like runFile, runFileWithReplacementDac, replaceFile, and replaceFileWithReplacementDac allow running and replacing ChucK files with or without a specified DAC.
+*  - Shred: Methods like removeShred and isShredActive allow managing ChucK shreds (concurrent threads of execution in ChucK).
+*  - Event: Methods like signalEvent, broadcastEvent, listenForEventOnce, startListeningForEvent, and stopListeningForEvent allow managing ChucK events.
+*  - Int, Float, String: Methods like setInt, getInt, setFloat, getFloat, setString, and getString allow setting and getting integer, float, and string variables in ChucK.
+*  - Int[], Float[]: Methods like setIntArray, getIntArray, setFloatArray, and getFloatArray allow managing integer and float arrays in ChucK.
+*  - Clear: Methods like clearChuckInstance and clearGlobals allow clearing the ChucK instance and its global state.
+*  - Private: Private methods like sendMessage and receiveMessage handle messaging between the Chuck class and the AudioWorklet.
+*/
+
 import DeferredPromise from "./DeferredPromise";
-import { asyncLoadFile, defer, loadWasm, preloadFiles } from "./utils";
+import { defer, loadWasm, preloadFiles } from "./utils";
 import type { File, Filename } from "./utils";
+import { InMessage, OutMessage } from "./enums"
 
-enum OutMessage {
-  // Filesystem
-  LOAD_FILE = "loadFile",
+// Create a Record type for deferredPromises and eventCallbacks
+type DeferredPromisesMap = Record<number, DeferredPromise<unknown>>;
+type EventCallbacksMap = Record<number, () => void>;
 
-  // Run/Replace Code
-  RUN_CODE = "runChuckCode",
-  RUN_CODE_WITH_REPLACEMENT_DAC = "runChuckCodeWithReplacementDac",
-  REPLACE_CODE = "replaceChuckCode",
-  REPLACE_CODE_WITH_REPLACEMENT_DAC = "replaceChuckCodeWithReplacementDac",
-  REMOVE_LAST_CODE = "removeLastCode",
-
-  // Run/Replace File
-  RUN_FILE = "runChuckFile",
-  RUN_FILE_WITH_REPLACEMENT_DAC = "runChuckFileWithReplacementDac",
-  RUN_FILE_WITH_ARGS = "runChuckFileWithArgs",
-  REPLACE_FILE = "replaceChuckFile",
-  REPLACE_FILE_WITH_REPLACEMENT_DAC = "replaceChuckFileWithReplacementDac",
-  REPLACE_FILE_WITH_ARGS = "replaceChuckFileWithArgs",
-
-  // SHRED
-  REMOVE_SHRED = "removeShred",
-  IS_SHRED_ACTIVE = "isShredActive",
-
-  // Event
-  SIGNAL_EVENT = "signalChuckEvent",
-  BROADCAST_EVENT = "broadcastChuckEvent",
-  LISTEN_FOR_EVENT_ONCE = "listenForEventOnce",
-  START_LISTENING_FOR_EVENT = "startListeningForChuckEvent",
-  STOP_LISTENING_FOR_EVENT = "stopListeningForChuckEvent",
-
-  // Int, Float, String
-  SET_INT = "setChuckInt",
-  GET_INT = "getChuckInt",
-  SET_FLOAT = "setChuckFloat",
-  GET_FLOAT = "getChuckFloat",
-  SET_STRING = "setChuckString",
-  GET_STRING = "getChuckString",
-
-  // Int[]
-  SET_INT_ARRAY = "setGlobalIntArray",
-  GET_INT_ARRAY = "getGlobalIntArray",
-  SET_INT_ARRAY_VALUE = "setGlobalIntArrayValue",
-  GET_INT_ARRAY_VALUE = "getGlobalIntArrayValue",
-  SET_ASSOCIATIVE_INT_ARRAY_VALUE = "setGlobalAssociativeIntArrayValue",
-  GET_ASSOCIATIVE_INT_ARRAY_VALUE = "getGlobalAssociativeIntArrayValue",
-
-  // Float[]
-  SET_FLOAT_ARRAY = "setGlobalFloatArray",
-  GET_FLOAT_ARRAY = "getGlobalFloatArray",
-  SET_FLOAT_ARRAY_VALUE = "setGlobalFloatArrayValue",
-  GET_FLOAT_ARRAY_VALUE = "getGlobalFloatArrayValue",
-  SET_ASSOCIATIVE_FLOAT_ARRAY_VALUE = "setGlobalAssociativeFloatArrayValue",
-  GET_ASSOCIATIVE_FLOAT_ARRAY_VALUE = "getGlobalAssociativeFloatArrayValue",
-
-  // Clear
-  CLEAR_INSTANCE = "clearInstance",
-  CLEAR_GLOBALS = "clearGlobals",
-}
-
-enum InMessage {
-  INIT_DONE = "initCallback",
-  PRINT = "console print",
-  EVENT = "eventCallback",
-
-  INT = "intCallback",
-  FLOAT = "floatCallback",
-  STRING = "stringCallback",
-  INT_ARRAY = "intArrayCallback",
-  FLOAT_ARRAY = "floatArrayCallback",
-
-  NEW_SHRED = "newShredCallback",
-  REPLACED_SHRED = "replacedShredCallback",
-  REMOVED_SHRED = "removedShredCallback",
-}
-
-export default class Chuck extends window.AudioWorkletNode {
-  private deferredPromises: { [key: number]: any } = {};
+export default class Chuck {
+  private audioWorkletNode: AudioWorkletNode;
+  private deferredPromises: DeferredPromisesMap = {};
   private deferredPromiseCounter: number = 0;
-  private eventCallbacks: { [key: number]: any } = {};
+  private eventCallbacks: EventCallbacksMap = {};
   private eventCallbackCounter: number = 0;
-
-  private chuckID: number;
-  private isReady: DeferredPromise = defer();
+  private isReady: DeferredPromise<void> = defer();
 
   constructor(
     preloadedFiles: File[],
     audioContext: AudioContext,
-    wasm: ArrayBuffer
+    wasm: ArrayBuffer,
+    chuckID: number = 1
   ) {
-    const chuckID = 1;
-    super(audioContext, "chuck-node", {
-      numberOfInputs: 1,
-      numberOfOutputs: 1,
-      // important: "number of inputs / outputs" is like an aggregate source
-      // most of the time, you only want one input source and one output
-      // source, but each one has multiple channels
-      outputChannelCount: [2],
-      processorOptions: {
-        chuckID: chuckID,
-        srate: audioContext.sampleRate,
-        preloadedFiles,
-        wasm,
+    this.audioWorkletNode = new AudioWorkletNode(
+      audioContext,
+      `chuck-node-${chuckID}`,
+      {
+        numberOfInputs: 1,
+        numberOfOutputs: 1,
+        // important: "number of inputs / outputs" is like an aggregate source
+        // most of the time, you only want one input source and one output
+        // source, but each one has multiple channels
+        outputChannelCount: [2],
+        processorOptions: {
+          chuckID,
+          srate: audioContext.sampleRate,
+          preloadedFiles,
+          wasm,
+        },
       },
-    });
-    this.chuckID = chuckID;
-    this.onprocessorerror = (e) => console.error(e);
-    this.port.onmessage = this.receiveMessage.bind(this);
+    );
+    this.audioWorkletNode.port.onmessage = this.receiveMessage.bind(this);
+    this.audioWorkletNode.onprocessorerror = (e) => console.error(e);
+    this.audioWorkletNode.connect(audioContext.destination);
   }
 
   static async init(
@@ -121,7 +70,6 @@ export default class Chuck extends window.AudioWorkletNode {
     );
     const preloadedFiles = await preloadFiles(filenamesToPreload);
     const chuck = new Chuck(preloadedFiles, audioContext, wasm);
-    chuck.connect(audioContext.destination);
     await chuck.isReady.promise;
     return chuck;
   }
@@ -130,6 +78,19 @@ export default class Chuck extends window.AudioWorkletNode {
     const callbackID = this.deferredPromiseCounter++;
     this.deferredPromises[callbackID] = defer();
     return callbackID;
+  }
+
+  // Expose the required methods and properties of the audioWorkletNode
+  public get context(): BaseAudioContext {
+    return this.audioWorkletNode.context;
+  }
+
+  public get numberOfInputs(): number {
+    return this.audioWorkletNode.numberOfInputs;
+  }
+
+  public get numberOfOutputs(): number {
+    return this.audioWorkletNode.numberOfOutputs;
   }
 
   // ================== Filesystem ===================== //
@@ -294,7 +255,7 @@ export default class Chuck extends window.AudioWorkletNode {
     this.sendMessage(OutMessage.BROADCAST_EVENT, { variable });
   }
 
-  public listenForEventOnce(variable: string, callback: Promise<any>) {
+  public listenForEventOnce(variable: string, callback: () => void) {
     const callbackID = this.eventCallbackCounter++;
     this.eventCallbacks[callbackID] = callback;
     this.sendMessage(OutMessage.LISTEN_FOR_EVENT_ONCE, {
@@ -303,7 +264,7 @@ export default class Chuck extends window.AudioWorkletNode {
     });
   }
 
-  public startListeningForEvent(variable: string, callback: Promise<any>) {
+  public startListeningForEvent(variable: string, callback: () => void) {
     const callbackID = this.eventCallbackCounter++;
     this.eventCallbacks[callbackID] = callback;
     this.sendMessage(OutMessage.START_LISTENING_FOR_EVENT, {
@@ -471,7 +432,7 @@ export default class Chuck extends window.AudioWorkletNode {
   // Private
   private sendMessage(type: OutMessage, body?: { [prop: string]: unknown }) {
     const msgBody = body ? { type, ...body } : { type };
-    this.port.postMessage(msgBody);
+    this.audioWorkletNode.port.postMessage(msgBody);
   }
 
   private receiveMessage(event: MessageEvent) {
@@ -479,8 +440,8 @@ export default class Chuck extends window.AudioWorkletNode {
 
     switch (type) {
       case InMessage.INIT_DONE:
-        if (this.isReady) {
-          this.isReady.resolve?.();
+        if (this.isReady && this.isReady.resolve) {
+          this.isReady.resolve();
         }
         break;
       case InMessage.PRINT:
@@ -488,7 +449,8 @@ export default class Chuck extends window.AudioWorkletNode {
         break;
       case InMessage.EVENT:
         if (event.data.callback in this.eventCallbacks) {
-          this.eventCallbacks[event.data.callback]();
+          const callback = this.eventCallbacks[event.data.callback];
+          callback();
         }
         break;
       case InMessage.INT:
@@ -497,7 +459,10 @@ export default class Chuck extends window.AudioWorkletNode {
       case InMessage.INT_ARRAY:
       case InMessage.FLOAT_ARRAY:
         if (event.data.callback in this.deferredPromises) {
-          this.deferredPromises[event.data.callback].resolve(event.data.result);
+          const promise = this.deferredPromises[event.data.callback];
+          if (promise.resolve) {
+            promise.resolve(event.data.result);
+          }
           delete this.deferredPromises[event.data.callback];
         }
         break;
@@ -505,9 +470,13 @@ export default class Chuck extends window.AudioWorkletNode {
         if (event.data.callback in this.deferredPromises) {
           const promise = this.deferredPromises[event.data.callback];
           if (event.data.shred > 0) {
-            promise.resolve(event.data.shred);
+            if (promise.resolve) {
+              promise.resolve(event.data.shred);
+            }
           } else {
-            promise.reject("Running code failed");
+            if (promise.reject) {
+              promise.reject("Running code failed");
+            }
           }
         }
         break;
@@ -515,12 +484,16 @@ export default class Chuck extends window.AudioWorkletNode {
         if (event.data.callback in this.deferredPromises) {
           const promise = this.deferredPromises[event.data.callback];
           if (event.data.newShred > 0) {
-            promise.resolve({
-              newShred: event.data.newShred,
-              oldShred: event.data.oldShred,
-            });
+            if (promise.resolve) {
+              promise.resolve({
+                newShred: event.data.newShred,
+                oldShred: event.data.oldShred,
+              });
+            }
           } else {
-            promise.reject("Replacing code failed");
+            if (promise.reject) {
+              promise.reject("Replacing code failed");
+            }
           }
         }
         break;
@@ -528,9 +501,13 @@ export default class Chuck extends window.AudioWorkletNode {
         if (event.data.callback in this.deferredPromises) {
           const promise = this.deferredPromises[event.data.callback];
           if (event.data.shred > 0) {
-            promise.resolve(event.data.shred);
+            if (promise.resolve) {
+              promise.resolve(event.data.shred);
+            }
           } else {
-            promise.reject("Removing code failed");
+            if (promise.reject) {
+              promise.reject("Removing code failed");
+            }
           }
         }
         break;
